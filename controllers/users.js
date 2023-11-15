@@ -80,3 +80,33 @@ export const verify = async (req, res) => {
   
   export const changePassword = async (req, res) => {};
   
+
+
+// export const updateBook = async (req, res) => {
+//   try {
+//     const { title } = req.params;
+//     const book = await Book.findByTitleAndUpdate(title, req.body);
+
+//     res.status(201).json(book);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: error.message });
+//   }
+// };
+
+// export const deleteBook = async (req, res) => {
+//   try {
+//     const { title } = req.params;
+//     const deleted = await Book.findByTitleAndDelete(title);
+
+//     if (deleted) {
+//       return res.status(200).send("Book deleted!");
+//     }
+
+//     throw new Error("Book not found!");
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: error.message });
+//   }
+// };
+
