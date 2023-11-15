@@ -5,12 +5,17 @@ const Schema = mongoose.Schema;
 let BookSchema = new Schema({
   title: { type: String },
   author: { type: String },
-  image: { type: String },
+  book_image: { type: String },
   publisher: { type: String },
   description: { type: String },
-  buy_links: [{ type: String }],
-  rank: { type: String },
-  weeks_on_list: { type: String },
+  buy_links: [
+    {
+      name: { type: String },
+      url: { type: String },
+    },
+  ],
+  rank: { type: Number },
+  weeks_on_list: { type: Number },
   display_name: { type: String },
 });
 

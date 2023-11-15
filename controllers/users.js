@@ -2,6 +2,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 import User from "../models/User.js";
+import Library from "../models/Library.js";
 
 let SALT_ROUNDS = 11;
 let TOKEN_KEY = "";
@@ -26,6 +27,14 @@ export const signUp = async (req, res) => {
     });
 
     await user.save();
+
+    // Create Empty Library when user registers a new account
+    const userLibrary = new Library({
+      books: [],
+      userId: user._id,
+    });
+
+    await userLibrary.save();
 
     const payload = {
       id: user._id,

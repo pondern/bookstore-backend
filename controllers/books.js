@@ -13,13 +13,13 @@ export const getBooks = async (req, res) => {
 export const getBook = async (req, res) => {
   try {
     const { title } = req.params;
-    const book = await Book.findBookByTitle(title);
+    const book = await Book.findOne(title);
 
     if (book) {
       return res.json(book);
     }
 
-    res.stauts(404).json({ message: "Book not found!" });
+    res.status(404).json({ message: "Book not found!" });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: error.message });
