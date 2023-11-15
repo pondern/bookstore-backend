@@ -10,7 +10,10 @@ const UserSchema = new Schema({
         book: { type: Schema.Types.ObjectId, ref: 'Book' },
         stars: { type: Number, min: 1, max: 5 },
         comment: { type: String },
+    
     }],
+    
+    display_name: { type: String}
 });
 
 export default mongoose.model("users", UserSchema);

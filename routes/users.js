@@ -3,10 +3,8 @@ import * as controllers from "../controllers/users.js";
 
 const router = Router();
 
-router.get("/", controllers.getUser);
-router.get("/:title", controllers.getUser);
-router.post("/", controllers.createUser);
-router.put("/:title", controllers.updateUser);
-router.delete("/:title", controllers.deleteUser);
+router.post("/sign-up", controllers.signUp);
+router.post("/sign-in", controllers.signIn);
+router.get("/verify", controllers.verify);
 
 export default router;
