@@ -39,8 +39,8 @@ export const createBook = async (req, res) => {
 
 export const updateBook = async (req, res) => {
   try {
-    const { title } = req.params;
-    const book = await Book.findByTitleAndUpdate(title, req.body);
+    const { id } = req.params;
+    const book = await Book.findByIdAndUpdate(id, req.body);
 
     res.status(201).json(book);
   } catch (error) {
@@ -51,8 +51,8 @@ export const updateBook = async (req, res) => {
 
 export const deleteBook = async (req, res) => {
   try {
-    const { title } = req.params;
-    const deleted = await Book.findByTitleAndDelete(title);
+    const { id } = req.params;
+    const deleted = await Book.findByIdAndDelete(id);
 
     if (deleted) {
       return res.status(200).send("Book deleted!");
