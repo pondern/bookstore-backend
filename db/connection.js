@@ -1,9 +1,12 @@
 import mongoose from "mongoose";
 import chalk from "chalk";
 
+const connectionString =
+  process.env.DB_URL || "mongodb://127.0.0.1:27017/bookstore-api";
+
 mongoose.set("returnOriginal", false);
 
-mongoose.connect("mongodb://127.0.0.1:27017/bookstore-api").catch((err) => {
+mongoose.connect(connectionString).catch((err) => {
   console.log(`Error connection go MongoDB: ${err.message}`);
 });
 
