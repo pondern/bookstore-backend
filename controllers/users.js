@@ -5,7 +5,7 @@ import User from "../models/User.js";
 import Library from "../models/Library.js";
 
 let SALT_ROUNDS = 11;
-let TOKEN_KEY = "";
+let TOKEN_KEY = "areallylonggoodkey";
 
 if (process.env.NODE_ENV === "production") {
   SALT_ROUNDS = Number(process.env.SALT_ROUNDS);
@@ -56,6 +56,9 @@ export const signIn = async (req, res) => {
     const user = await User.findOne({ username: username }).select(
       "username email password_digest"
     );
+
+    console.log(user);
+
     if (await bcrypt.compare(password, user.password_digest)) {
       const payload = {
         id: user._id,
