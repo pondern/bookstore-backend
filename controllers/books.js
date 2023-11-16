@@ -12,8 +12,8 @@ export const getBooks = async (req, res) => {
 
 export const getBook = async (req, res) => {
   try {
-    const { title } = req.params;
-    const book = await Book.findOne(title);
+    const { id } = req.params;
+    const book = await Book.findById(id);
 
     if (book) {
       return res.json(book);
