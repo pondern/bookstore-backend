@@ -1,5 +1,23 @@
 import Library from "../models/Library.js";
 
+export const getUserLibrary = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const userLibrary = await Library.find({ userId: userId }).populate(
+      "books.book"
+    );
+
+    if (userLibrary) {
+      return res.json(userLibrary);
+    }
+
+    res.status(404).json({ message: "Library not found!" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
 export const addBookToLibrary = async (req, res) => {
   try {
     const { userId, bookId } = req.params;
@@ -36,6 +54,43 @@ export const addBookToLibrary = async (req, res) => {
     }
 
     res.status(201).json("Book added to library successfully");
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+export const removeBookFromLibrary = async (req, res) => {
+  try {
+    const { libraryId, bookReviewId } = req.params;
+
+    await Library.findByIdAndUpdate(libraryId, {
+      $pull: { books: { _id: bookReviewId } },
+    });
+
+    res.status(201).json("Book removed from library successfully");
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+export const editBookInLibrary = async (req, res) => {
+  try {
+    const { libraryId, bookReviewId } = req.params;
+    const { stars, comment } = req.body;
+
+    await Library.findOneAndUpdate(
+      { _id: libraryId, "books._id": bookReviewId },
+      {
+        $set: {
+          "books.$.stars": stars,
+          "books.$.comment": comment,
+        },
+      }
+    );
+
+    res.status(201).json("Book from library updated successfully");
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: error.message });
