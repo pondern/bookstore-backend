@@ -9,6 +9,7 @@
     "db:seed": "node seed/data.js"
   },
   "keywords": [],
+  "type": "module",
   "author": "",
   "license": "ISC",
   "dependencies": {
