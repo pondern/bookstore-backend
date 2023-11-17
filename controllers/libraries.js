@@ -8,7 +8,7 @@ export const getUserLibrary = async (req, res) => {
     );
 
     if (userLibrary) {
-      return res.json(userLibrary);
+      return res.json(userLibrary[0]);
     }
 
     res.status(404).json({ message: "Library not found!" });
