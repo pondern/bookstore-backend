@@ -41,6 +41,7 @@ DELETE "/:id" Deletes a book object by objectID.
 POST "/sign-up" Creates a new user
 POST "/sign-in" Creates a new token upon sign-in
 GET "/verify" Returns a verified user back to all books page
+DELETE "/users/:id" Deletes a user
 ```
 
 #### "/libraries"
