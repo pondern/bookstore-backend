@@ -48,7 +48,6 @@ GET "/verify" Returns a verified user back to all books page
 ```javascript
 GET "/:userId" Returns the user library page
 POST "/:userId/book/:bookId" Adds a book to the user library
-PUT "/:userId/book/:bookId" Updates an existing book object in the user library
 PUT "/:libraryId/bookReview/:bookReviewId" Removes book from user library
 PUT "/:libraryId/bookReviewEdit/:bookReviewId" Edits user library
 ```
