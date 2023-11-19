@@ -92,16 +92,16 @@ export const verify = async (req, res) => {
 
 export const deleteUser = async (req, res) => {
   try {
-    const { id } = req.params
-    const deleted = await User.findByIdAndDelete(id)
+    const { id } = req.params;
+    const deleted = await User.findByIdAndDelete(id);
     if (deleted) {
-      return res.status(200).send('User deleted')
+      return res.status(200).send("User deleted");
     }
-    throw new Error('User not found')
+    throw new Error("User not found");
   } catch (error) {
-    console.log(error.message)
-    res.status(500).json({ error: error.message })
+    console.log(error.message);
+    res.status(500).json({ error: error.message });
   }
-}
+};
 
 export const changePassword = async (req, res) => {};
