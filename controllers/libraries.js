@@ -96,3 +96,27 @@ export const editBookInLibrary = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+export const deleteLibrary = async (req, res) => {
+  try {
+    const { libraryId } = req.params;
+
+    await Library.findByIdAndDelete(libraryId);
+
+    res.status(201).json("Library deleted successfully");
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+export const getAllLibraries = async (req, res) => {
+  try {
+    const allLibraries = await Library.find().populate("books.book");
+
+    res.status(200).json(allLibraries);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+};
