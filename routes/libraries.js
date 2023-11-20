@@ -5,6 +5,8 @@ const router = Router();
 
 router.get("/:userId", controllers.getUserLibrary);
 router.post("/:userId/book/:bookId", controllers.addBookToLibrary);
+router.delete("/:libraryId", controllers.deleteLibrary); // New route for deleting a library
+router.get("/", controllers.getAllLibraries); // New route for getting all libraries
 router.put(
   "/:libraryId/bookReview/:bookReviewId",
   controllers.removeBookFromLibrary
