@@ -47,10 +47,12 @@ DELETE "/:id" Deletes a user
 #### "/libraries"
 
 ```javascript
+GET "/" Returns all libraries
 GET "/:userId" Returns the user library page
-POST "/:userId/book/:bookId" Adds a book to the user library
 PUT "/:libraryId/bookReview/:bookReviewId" Removes book from user library
 PUT "/:libraryId/bookReviewEdit/:bookReviewId" Edits user library
+POST "/:userId/book/:bookId" Adds a book to the user library
+DELETE "/:libraryId" Deletes a single library
 ```
 
 ## Schema
